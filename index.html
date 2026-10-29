@@ -221,7 +221,9 @@
     // Start-Funktion
     function startTyping(text, autoLoop = false) {
       clearTimeout(timeoutId);
-      currentText = text.toUpperCase();
+      // Wandelt alle Varianten von Apostrophen im Eingabetext direkt in das Ziel-Apostroph '’' um
+      const normalizedText = text.replace(/['´`‘]/g, '’');
+      currentText = normalizedText.toUpperCase();
       currentIndex = 0;
       typedContentEl.textContent = '';
       isTyping = true;
